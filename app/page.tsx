@@ -1,65 +1,66 @@
-import Image from "next/image";
+import { TabBar } from "@/components/tab-bar";
+import { VideoFeed } from "@/components/video-feed";
+
+const dramas = [
+  {
+    id: 1,
+    title: "重生后我成了霸总白月光",
+    episode: "第 12 集",
+    progress: "07:35 / 12:40",
+    summary: "豪门误会持续升级，女主在雨夜里选择直面真相。",
+    likes: "12.4 万",
+    comments: "3,218",
+    shares: "8,902",
+    badge: "热播",
+    cover:
+      "https://images.unsplash.com/photo-1524863479829-916d8e77f114?auto=format&fit=crop&w=900&q=80",
+    videoSrc: "/video/demo.mp4",
+  },
+  {
+    id: 2,
+    title: "我在古代开直播",
+    episode: "第 8 集",
+    progress: "03:20 / 09:55",
+    summary: "穿越、反转、打脸三连击，剧情节奏紧凑。",
+    likes: "8.7 万",
+    comments: "1,904",
+    shares: "4,177",
+    badge: "独播",
+    cover:
+      "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: 3,
+    title: "替嫁后我成了全网顶流",
+    episode: "第 3 集",
+    progress: "01:10 / 08:20",
+    summary: "身份错位带来全新人生，名场面持续刷屏。",
+    likes: "15.2 万",
+    comments: "4,612",
+    shares: "9,081",
+    badge: "新剧",
+    cover:
+      "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="h-[100dvh] overflow-hidden bg-[#09090b] text-white">
+      <div className="relative mx-auto flex h-full w-full max-w-sm flex-col overflow-hidden bg-[#101114] shadow-2xl shadow-black/50">
+        <header className="pointer-events-none absolute left-0 right-0 top-0 z-30 px-4 pt-[calc(1rem+env(safe-area-inset-top))]">
+          <h1 className="text-sm font-medium tracking-[0.22em] text-white/88 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            红果短剧
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        </header>
+
+        <VideoFeed dramas={dramas} />
+
+        <div className="absolute bottom-0 left-0 right-0 z-30">
+          <TabBar />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
+
